@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body{
+            background-color: dodgerblue;
+            color: white;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+</head>
+<body>
+    <form 
+    href="./congratulations.html" 
+    id="exampleForm" 
+    action="#" 
+    method="get"
+    >
+        <label for="name">
+            Name:
+            <input type="text" name="name">
+        </label>
+        <label for="email">
+            Email Address:
+            <input type="email" name="email">
+        </label>
+        <label for="message">
+            Message:
+            <textarea name="message"></textarea>
+        </label>
+        <button type="submit" value="Submit">
+            Submit
+        </button>
+    </form>
+
+    <script>
+        const form = document.getElementById('exampleForm');
+
+        form.onsubmit = function(event){
+            event.preventDefault();
+
+            const formData = new FormData(form);
+            formData.append('timestamp', Date.now());
+
+            // example of executing other code before sending data
+            console.log('Form data to be sent:', formData);
+
+            // convert formData to a query string
+            const queryString = new URLSearchParams(formData).toString();
+            console.log('Query string:', queryString);
+
+            // simulated send the data to the server
+            setTimeout(()=>{
+                window.location.href = './congratulations.html';
+            }, 1000);
+
+            console.log('Form data sent:', formData);
+        }
+
+    </script>
+</body>
+</html>
